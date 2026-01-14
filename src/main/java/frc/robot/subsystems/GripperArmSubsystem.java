@@ -134,7 +134,6 @@ public class GripperArmSubsystem extends SubsystemBase{
     }
 
     private double degreesToMotorRotations(double degrees) {
-        // TODO: confirm reduction ratio from CAD
         double reduction = 59.0;
         return (degrees / 360.0) * reduction;
     }

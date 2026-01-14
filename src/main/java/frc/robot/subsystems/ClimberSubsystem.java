@@ -40,9 +40,6 @@ public class ClimberSubsystem extends SubsystemBase {
         return MathUtil.clamp(value, -1.0, 1.0);
     }    
 
-
-    //Control Methods
-
     public void climbUp() {
         if (isStalled()) {
             hold();
@@ -84,8 +81,6 @@ public class ClimberSubsystem extends SubsystemBase {
     public void unlockClimber() {
         climberLocked = false;
     }    
-
-    //
 
     public boolean isPastTopSoftLimit() {
         return climberMotor.getPosition().getValue() >=

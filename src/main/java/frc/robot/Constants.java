@@ -141,6 +141,8 @@ public final class Constants {
     public static final double STEER_SUPPLY_CURRENT_LIMIT = 20.0;
     public static final double STEER_SUPPLY_CURRENT_THRESHOLD = 30.0;
     public static final double STEER_SUPPLY_TIME_THRESHOLD = 0.2;
-   
+  }
+  public static class SuperstructureConstants {
+    public static final double SAFE_ARM_ANGLE_DEG = 15.0;
   }
 }

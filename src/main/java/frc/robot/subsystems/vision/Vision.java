@@ -8,10 +8,14 @@ import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.subsystems.vision.VisionIO.VisionIOInputs;
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFields;
+
 
 import java.util.Optional;
 
 public class Vision extends SubsystemBase {
+    private final AprilTagFieldLayout fieldLayout;
     private final VisionIO[] cameras;
     private final VisionIOInputs[] inputs;
     
@@ -31,6 +35,7 @@ public class Vision extends SubsystemBase {
         for (int i = 0; i < cameras.length; i++) {
             inputs[i] = new VisionIOInputs();
         }
+        fieldLayout = AprilTagFields.k2025Reefscape.loadAprilTagLayoutField();
     }
     
     @Override

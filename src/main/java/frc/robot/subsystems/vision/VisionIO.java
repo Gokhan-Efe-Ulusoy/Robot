@@ -1,52 +1,68 @@
 package frc.robot.subsystems.vision;
 
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * IO interface for vision cameras
+ * Supports multiple camera types (Limelight, PhotonVision, etc.)
+ */
 public interface VisionIO {
     
-    public static class VisionIOInputs {
+    /**
+     * Input data from vision camera
+     */
+    class VisionIOInputs {
         public boolean connected = false;
         public boolean hasTargets = false;
         
+        // Pose estimation
         public Pose2d estimatedPose = null;
         public double timestamp = 0.0;
         public double poseAmbiguity = 1.0;
         
+        // Target information
         public int tagCount = 0;
         public int[] visibleTagIds = new int[0];
         public double averageTagDistance = 0.0;
         public double averageTagArea = 0.0;
         
+        // Camera performance
         public double latencyMs = 0.0;
         public double fps = 0.0;
-        
-        public void toSmartDashboard(String prefix) {
-            SmartDashboard.putBoolean(prefix + "/Connected", connected);
-            SmartDashboard.putBoolean(prefix + "/HasTargets", hasTargets);
-            SmartDashboard.putNumber(prefix + "/TagCount", tagCount);
-            SmartDashboard.putNumber(prefix + "/AvgDistance", averageTagDistance);
-            SmartDashboard.putNumber(prefix + "/AvgArea", averageTagArea);
-            SmartDashboard.putNumber(prefix + "/Ambiguity", poseAmbiguity);
-            SmartDashboard.putNumber(prefix + "/LatencyMs", latencyMs);
-            SmartDashboard.putNumber(prefix + "/FPS", fps);
-            
-            if (estimatedPose != null) {
-                SmartDashboard.putNumber(prefix + "/PoseX", estimatedPose.getX());
-                SmartDashboard.putNumber(prefix + "/PoseY", estimatedPose.getY());
-                SmartDashboard.putNumber(prefix + "/PoseRot", estimatedPose.getRotation().getDegrees());
-            }
-        }
+        public int pipelineIndex = 0;
     }
     
-    public default void updateInputs(VisionIOInputs inputs) {}
-    public default void setPipeline(int pipeline) {}
-    public default void setLEDMode(LEDMode mode) {}
+    /**
+     * Update inputs from camera
+     * @param inputs Input object to populate
+     */
+    default void updateInputs(VisionIOInputs inputs) {}
     
-    public enum LEDMode {
-        PIPELINE,
-        OFF,
-        BLINK,
-        ON
+    /**
+     * Set camera pipeline
+     * @param pipeline Pipeline index to use
+     */
+    default void setPipeline(int pipeline) {}
+    
+    /**
+     * Set LED mode
+     * @param mode LED mode to use
+     */
+    default void setLEDMode(LEDMode mode) {}
+    
+    /**
+     * LED mode options
+     */
+    enum LEDMode {
+        PIPELINE(0),  // Use pipeline default
+        OFF(1),       // Force off
+        BLINK(2),     // Blink
+        ON(3);        // Force on
+        
+        public final int value;
+        
+        LEDMode(int value) {
+            this.value = value;
+        }
     }
 }

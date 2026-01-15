@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -12,7 +13,7 @@ import com.ctre.phoenix6.hardware.Pigeon2;
 public class DriveSubsystem extends SubsystemBase {
 
     private final Pigeon2 gyro;
-
+    private final SwerveDrivePoseEstimator poseEstimator;
     private final SwerveModule frontLeft;
     private final SwerveModule frontRight;
     private final SwerveModule backLeft;
@@ -123,9 +124,16 @@ public class DriveSubsystem extends SubsystemBase {
         return gyroHealthy;
     }
     
+    public void addVisionMeasurement(Pose2d visionPose, double timestampSeconds) {
+        poseEstimator.addVisionMeasurement(
+            visionPose,
+            timestampSeconds
+        );
+    }
 
     public Pose2d getPose() {
         return odometry.getPoseMeters();
+        return poseEstimator.getEstimatedPosition();
     }
 
     public void resetOdometry(Pose2d pose) {
@@ -150,5 +158,6 @@ public class DriveSubsystem extends SubsystemBase {
         backLeft.setBrakeMode(enable);
         backRight.setBrakeMode(enable);
     }
+
     
 }

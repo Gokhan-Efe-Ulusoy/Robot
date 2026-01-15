@@ -18,6 +18,10 @@ public class DriveSubsystem extends SubsystemBase {
     private final SwerveModule frontRight;
     private final SwerveModule backLeft;
     private final SwerveModule backRight;
+    private double lastX = 0;
+    private double lastY = 0;
+    private double lastOmega = 0;
+
 
     private final SwerveDriveKinematics kinematics;
     private final SwerveDriveOdometry odometry;
@@ -79,7 +83,11 @@ public class DriveSubsystem extends SubsystemBase {
             double ySpeed,
             double rot,
             boolean fieldRelative
-    ) {
+    ) { 
+
+        lastX = xSpeed;
+        lastY = ySpeed;
+        lastOmega = rot;
 
         ChassisSpeeds speeds = fieldRelative
                 ? ChassisSpeeds.fromFieldRelativeSpeeds(
@@ -158,6 +166,8 @@ public class DriveSubsystem extends SubsystemBase {
         backLeft.setBrakeMode(enable);
         backRight.setBrakeMode(enable);
     }
-
     
+    public ChassisSpeeds getDriverSpeeds() {
+    return new ChassisSpeeds(lastX, lastY, lastOmega);
+    }
 }

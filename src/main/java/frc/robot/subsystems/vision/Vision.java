@@ -135,4 +135,9 @@ public class Vision extends SubsystemBase {
             this.timestamp = timestamp;
         }
     }
+
+    public Optional<Pose2d> getBestReefTarget(Pose2d robotPose) {
+        return Optional.empty();
+    }
+
 }

@@ -1,9 +1,7 @@
 package frc.robot.commands.autoalign;
 
 public enum AutoAlignState {
-    IDLE,
-    SEEK_TARGET,
+    SEEK,
     APPROACH,
-    FINAL_ALIGN,
-    LOCKED
+    FINAL_ALIGN
 }

@@ -1,0 +1,73 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 10.357377049180327,
+        "y": 6.36859631147541
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 11.353649786854325,
+        "y": 6.014811992562608
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 12.239446721311474,
+        "y": 5.457530737704917
+      },
+      "prevControl": {
+        "x": 11.329879407502787,
+        "y": 5.999635554298957
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Start Bitiş_K"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "AutonomousAutoAlignCommand",
+      "waypointRelativePos": 0.8547008547008547,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "L3CoralScorePositionCommand",
+      "waypointRelativePos": 0.9325735992402667,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": " CoralScoreSequenceL3Command",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -56.6893691754392
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

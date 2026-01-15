@@ -1,7 +1,12 @@
 package frc.robot.commands.autoalign;
 
+import java.util.Optional;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.vision.Vision;
 
@@ -39,15 +44,27 @@ public class AutonomousAutoAlignCommand extends Command {
             return;
         }
 
-        vision.getBestReefTarget(drive.getPose()).ifPresentOrElse(
-                target -> {
-                    state = AutoAlignState.ALIGNING;
-                    drive.drive(controller.calculate(drive.getPose(), target));
-                },
-                () -> state = AutoAlignState.BLIND_ALIGN
+        Optional<Pose2d> target =
+                ReefTargetSelector.selectBestReefTarget(
+                        drive.getPose(),
+                        vision.getVisibleTags()
+                );
+
+        if (target.isEmpty()) {
+            state = AutoAlignState.BLIND_ALIGN;
+            drive.drive(new ChassisSpeeds());
+            return;
+        }
+
+        state = AutoAlignState.ALIGNING;
+        drive.drive(
+                controller.calculate(
+                        drive.getPose(),
+                        target.get()
+                )
         );
 
-        if (state == AutoAlignState.ALIGNING && controller.atGoal()) {
+        if (controller.atGoal()) {
             state = AutoAlignState.LOCKED;
         }
     }
@@ -60,6 +77,6 @@ public class AutonomousAutoAlignCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        drive.stop();
+        drive.drive(new ChassisSpeeds());
     }
 }

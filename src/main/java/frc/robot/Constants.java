@@ -94,9 +94,11 @@ public final class Constants {
   public static class IntakeConstants {
 
     public static final int MOTOR_ID = 51;
-
-    public static final double INTAKE_SPEED = 0.7;
-    public static final double EJECT_SPEED = -0.7;
+    public static final double INTAKE_SPEED = 1.0;
+    public static final double EJECT_SPEED = -1.0;
+    public static final double HOLD_SPEED = 0.1;
+    public static final int CORAL_SENSOR_DIO = 0;
+    public static final int ALGAE_SENSOR_DIO = 1;
   }
   
   public static class ClimberConstants {

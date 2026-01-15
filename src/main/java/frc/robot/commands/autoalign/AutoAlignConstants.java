@@ -4,34 +4,23 @@ public final class AutoAlignConstants {
 
     private AutoAlignConstants() {}
 
-    /* ---------------- TRANSLATION PID ---------------- */
-    public static final double TRANSLATION_kP = 2.5;
-    public static final double TRANSLATION_kI = 0.0;
-    public static final double TRANSLATION_kD = 0.1;
+    public static final double X_KP = 3.5;
+    public static final double X_KD = 0.15;
 
-    public static final double MAX_TRANSLATION_VEL = 2.5;   // m/s
-    public static final double MAX_TRANSLATION_ACCEL = 3.0; // m/s^2
+    public static final double Y_KP = 3.5;
+    public static final double Y_KD = 0.15;
 
-    /* ---------------- ROTATION PID ---------------- */
-    public static final double ROTATION_kP = 5.0;
-    public static final double ROTATION_kI = 0.0;
-    public static final double ROTATION_kD = 0.15;
+    public static final double THETA_KP = 5.0;
+    public static final double THETA_KD = 0.25;
 
-    public static final double MAX_ROTATION_VEL =
-            Math.toRadians(360);
-    public static final double MAX_ROTATION_ACCEL =
-            Math.toRadians(720);
+    public static final double MAX_SPEED = 3.0;
+    public static final double MAX_ACCEL = 4.0;
 
-    /* ---------------- FSM THRESHOLDS ---------------- */
-    public static final double APPROACH_DISTANCE = 0.7;
+    public static final double MAX_OMEGA = 6.0;
+    public static final double MAX_ALPHA = 10.0;
 
-    /* ---------------- ALIGN TOLERANCES ---------------- */
     public static final double POSITION_TOLERANCE = 0.05;
-    public static final double ROTATION_TOLERANCE =
-            Math.toRadians(2.0);
+    public static final double ANGLE_TOLERANCE_RAD = Math.toRadians(2.0);
 
-    /* ---------------- VISION CONFIDENCE ---------------- */
-    public static final double TELEOP_MAX_TARGET_AGE = 0.5;
-    public static final double AUTO_MAX_TARGET_AGE = 0.2;
-    public static final double MAX_AMBIGUITY = 0.25;
+    public static final double AUTON_TIMEOUT_SEC = 2.5;
 }

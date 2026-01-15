@@ -2,26 +2,18 @@ package frc.robot.commands.autoalign;
 
 public class VisionConfidence {
 
-    public final boolean hasTarget;
-    public final double ambiguity;
-    public final double distance;
-    public final double timestamp;
+    private static final double MAX_AMBIGUITY = 0.25;
+    private static final double MAX_AGE_SEC = 0.4;
 
-    public VisionConfidence(
-            boolean hasTarget,
+    public static boolean isUsable(
             double ambiguity,
-            double distance,
-            double timestamp
+            double timestamp,
+            double now,
+            int tagCount
     ) {
-        this.hasTarget = hasTarget;
-        this.ambiguity = ambiguity;
-        this.distance = distance;
-        this.timestamp = timestamp;
-    }
+        if (tagCount >= 2 && ambiguity < 0.4) return true;
 
-    public boolean isUsable(double now, double maxAge) {
-        return hasTarget
-                && ambiguity <= AutoAlignConstants.MAX_AMBIGUITY
-                && (now - timestamp) <= maxAge;
+        return ambiguity <= MAX_AMBIGUITY
+                && (now - timestamp) <= MAX_AGE_SEC;
     }
 }

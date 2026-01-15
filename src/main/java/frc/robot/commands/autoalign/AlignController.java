@@ -12,8 +12,8 @@ public class AlignController {
     private final PIDController yController;
     private final PIDController thetaController;
 
-    private static final double MAX_VEL = 3.5;      // m/s
-    private static final double MAX_OMEGA = Math.PI * 2; // rad/s
+    private static final double MAX_VEL = 3.5;      
+    private static final double MAX_OMEGA = Math.PI * 2; 
 
     public AlignController() {
         xController = new PIDController(3.2, 0.0, 0.25);

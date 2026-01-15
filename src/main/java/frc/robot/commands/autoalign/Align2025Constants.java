@@ -8,18 +8,15 @@ public final class Align2025Constants {
 
     private Align2025Constants() {}
 
-    // Reef face offset (robot merkezinden hedef skor noktası)
     public static final Transform2d REEF_OFFSET =
         new Transform2d(
             new Translation2d(0.55, 0.0),
             new Rotation2d()
         );
 
-    // Final alignment toleransları
     public static final double POSITION_TOLERANCE_METERS = 0.04;
     public static final double ANGLE_TOLERANCE_DEG = 2.0;
 
-    // Hız limitleri
     public static final double APPROACH_MAX_SPEED = 2.0;
     public static final double FINAL_MAX_SPEED = 0.4;
 

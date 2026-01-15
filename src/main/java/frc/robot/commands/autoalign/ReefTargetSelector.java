@@ -13,7 +13,6 @@ import frc.robot.subsystems.vision.VisionTag;
 
 public final class ReefTargetSelector {
 
-    // ---------------- CONSTANTS ----------------
 
     private static final List<Integer> BLUE_REEF_TAGS =
             List.of(17, 18, 19, 20, 21, 22);
@@ -21,19 +20,15 @@ public final class ReefTargetSelector {
     private static final List<Integer> RED_REEF_TAGS =
             List.of(6, 7, 8, 9, 10, 11);
 
-    // Robotun reef’e yaklaşırken duracağı offset
     private static final Transform2d ALIGN_OFFSET =
             new Transform2d(
-                    0.6,                       // ileri (metre)
-                    0.0,                       // yanal
+                    0.6,                       
+                    0.0,                    
                     Rotation2d.fromDegrees(180)
             );
 
     private ReefTargetSelector() {
-        // static utility class
     }
-
-    // ---------------- PUBLIC API ----------------
 
     public static Optional<Pose2d> selectBestReefTarget(
             Pose2d robotPose,
@@ -51,18 +46,13 @@ public final class ReefTargetSelector {
 
         return visibleTags.stream()
 
-                // Reef tag mi?
                 .filter(tag -> validReefTags.contains(tag.getId()))
 
-                // En iyi hedefi seç
                 .min(Comparator.comparingDouble(
                         tag -> computeSelectionScore(robotPose, tag)))
 
-                // Align pozisyonuna çevir
                 .map(ReefTargetSelector::computeAlignPose);
     }
-
-    // ---------------- INTERNAL LOGIC ----------------
 
     private static double computeSelectionScore(
             Pose2d robotPose,
@@ -81,7 +71,6 @@ public final class ReefTargetSelector {
                                 .getDegrees()
                 );
 
-        // Basit ama çok stabil bir skor fonksiyonu
         return distance + headingError * 0.01;
     }
 

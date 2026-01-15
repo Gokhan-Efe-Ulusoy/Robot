@@ -2,10 +2,6 @@ package frc.robot.subsystems.vision;
 
 import edu.wpi.first.math.geometry.Pose2d;
 
-/**
- * Immutable vision tag representation
- * Auto-align & reef selector safe
- */
 public final class VisionTag {
 
     private final int id;

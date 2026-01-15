@@ -6,11 +6,6 @@ import edu.wpi.first.wpilibj.Timer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
-
-/**
- * Simulation implementation of VisionIO
- * Provides realistic vision data for testing
- */
 public class VisionIOSim implements VisionIO {
     
     private final String cameraName;
@@ -18,20 +13,18 @@ public class VisionIOSim implements VisionIO {
     private final List<Pose2d> knownTagPoses;
     
     private boolean simulateTargets = true;
-    private double simulatedLatency = 35.0;  // ms
-    private double simulatedNoise = 0.02;    // meters
+    private double simulatedLatency = 35.0;  
+    private double simulatedNoise = 0.02;    
     private int currentPipeline = 0;
     private LEDMode currentLEDMode = LEDMode.PIPELINE;
     
-    // Camera parameters
-    private static final double MAX_VISION_RANGE = 4.5;  // meters
-    private static final double CAMERA_FOV = Math.toRadians(90);  // ±45 degrees
+    private static final double MAX_VISION_RANGE = 4.5; 
+    private static final double CAMERA_FOV = Math.toRadians(90);  
     
     /**
-     * Creates a simulated vision camera
-     * @param cameraName Name of the camera
-     * @param robotPoseSupplier Supplier for robot pose
-     * @param knownTagPoses List of AprilTag poses on the field
+     * @param cameraName
+     * @param robotPoseSupplier 
+     * @param knownTagPoses 
      */
     public VisionIOSim(String cameraName, Supplier<Pose2d> robotPoseSupplier, List<Pose2d> knownTagPoses) {
         this.cameraName = cameraName;
@@ -47,11 +40,9 @@ public class VisionIOSim implements VisionIO {
         inputs.connected = true;
         inputs.pipelineIndex = currentPipeline;
         
-        // Add realistic latency variation (±5ms)
         inputs.latencyMs = simulatedLatency + (Math.random() * 10 - 5);
         inputs.timestamp = Timer.getFPGATimestamp() - (inputs.latencyMs / 1000.0);
         
-        // Simulate realistic FPS (85-95)
         inputs.fps = 85.0 + (Math.random() * 10);
         
         if (!simulateTargets || knownTagPoses.isEmpty()) {
@@ -65,10 +56,7 @@ public class VisionIOSim implements VisionIO {
             return;
         }
         
-        // Get current robot pose
         Pose2d actualPose = robotPoseSupplier.get();
-        
-        // Find visible tags
         List<TagDetection> visibleTags = findVisibleTags(actualPose);
         
         if (visibleTags.isEmpty()) {
@@ -82,14 +70,12 @@ public class VisionIOSim implements VisionIO {
             return;
         }
         
-        // Simulate vision measurement with noise
         inputs.hasTargets = true;
         inputs.tagCount = visibleTags.size();
         inputs.visibleTagIds = visibleTags.stream()
             .mapToInt(t -> t.id)
             .toArray();
         
-        // Add Gaussian noise to pose
         double noisyX = actualPose.getX() + (Math.random() * 2 - 1) * simulatedNoise;
         double noisyY = actualPose.getY() + (Math.random() * 2 - 1) * simulatedNoise;
         double noisyTheta = actualPose.getRotation().getRadians() + 
@@ -97,7 +83,6 @@ public class VisionIOSim implements VisionIO {
         
         inputs.estimatedPose = new Pose2d(noisyX, noisyY, new Rotation2d(noisyTheta));
         
-        // Calculate average metrics
         double totalDistance = 0;
         double totalArea = 0;
         
@@ -109,7 +94,6 @@ public class VisionIOSim implements VisionIO {
         inputs.averageTagDistance = totalDistance / visibleTags.size();
         inputs.averageTagArea = totalArea / visibleTags.size();
         
-        // Ambiguity is lower with more tags and closer distance
         if (inputs.tagCount >= 2) {
             inputs.poseAmbiguity = 0.05 + (Math.random() * 0.03);
         } else {
@@ -124,15 +108,12 @@ public class VisionIOSim implements VisionIO {
         for (int i = 0; i < knownTagPoses.size(); i++) {
             Pose2d tagPose = knownTagPoses.get(i);
             
-            // Calculate distance
             double distance = robotPose.getTranslation().getDistance(tagPose.getTranslation());
             
-            // Check if within range
             if (distance > MAX_VISION_RANGE) {
                 continue;
             }
             
-            // Calculate angle to tag
             Rotation2d angleToTag = new Rotation2d(
                 tagPose.getX() - robotPose.getX(),
                 tagPose.getY() - robotPose.getY()
@@ -142,17 +123,14 @@ public class VisionIOSim implements VisionIO {
                 angleToTag.minus(robotPose.getRotation()).getRadians()
             );
             
-            // Normalize angle to [-pi, pi]
             while (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
             while (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
             angleDiff = Math.abs(angleDiff);
             
-            // Check if within FOV
             if (angleDiff > CAMERA_FOV) {
                 continue;
             }
             
-            // Calculate apparent area (inversely proportional to distance squared)
             double area = Math.min(1.0, 0.5 / (distance * distance));
             
             // Add some randomness to area
@@ -176,7 +154,6 @@ public class VisionIOSim implements VisionIO {
         System.out.println("[VisionIOSim] " + cameraName + " LED mode set to " + mode);
     }
     
-    // Simulation control methods
     
     public void setSimulateTargets(boolean simulate) {
         this.simulateTargets = simulate;
@@ -189,10 +166,6 @@ public class VisionIOSim implements VisionIO {
     public void setSimulatedNoise(double noiseMeters) {
         this.simulatedNoise = noiseMeters;
     }
-    
-    /**
-     * Helper class for tag detection
-     */
     private static class TagDetection {
         final int id;
         final double distance;

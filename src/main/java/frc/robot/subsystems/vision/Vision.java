@@ -16,10 +16,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Vision subsystem – 2025 REEFSCAPE
- * Derlenen, estimator-safe, selector-ready
- */
 public class Vision extends SubsystemBase {
 
     private final DriveSubsystem drive;

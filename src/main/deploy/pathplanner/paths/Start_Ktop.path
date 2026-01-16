@@ -16,11 +16,11 @@
     },
     {
       "anchor": {
-        "x": 12.239446721311474,
+        "x": 12.191495901639344,
         "y": 5.457530737704917
       },
       "prevControl": {
-        "x": 11.329879407502787,
+        "x": 11.281928587830658,
         "y": 5.999635554298957
       },
       "nextControl": null,
@@ -31,26 +31,7 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "AutonomousAutoAlignCommand",
-      "waypointRelativePos": 0.8547008547008547,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "L3CoralScorePositionCommand",
-      "waypointRelativePos": 0.9325735992402667,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": " CoralScoreSequenceL3Command",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

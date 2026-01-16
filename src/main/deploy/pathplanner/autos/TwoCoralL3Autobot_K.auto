@@ -1,0 +1,73 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start_Kbot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutonomousAutoAlignCommand"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "L4CoralScorePositionCommand"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralScoreSequenceL4Command"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Take Coral_Kbot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "L2AlgaePickupSequenceCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Finish_Kbot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutonomousAutoAlignCommand"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "L4CoralScorePositionCommand"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "CoralScoreSequenceL4Command"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

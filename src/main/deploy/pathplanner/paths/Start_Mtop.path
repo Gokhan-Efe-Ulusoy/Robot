@@ -31,26 +31,7 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "AutonomousAutoAlignCommand",
-      "waypointRelativePos": 0.8266856600189934,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "L3CoralScorePositionCommand",
-      "waypointRelativePos": 0.9406457739791069,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": " CoralScoreSequenceL3Command",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

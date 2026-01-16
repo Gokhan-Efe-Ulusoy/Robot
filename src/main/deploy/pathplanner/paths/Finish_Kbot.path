@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 16.35122950819672,
+        "y": 2.1848872950819667
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 15.380225409836067,
+        "y": 2.388678278688524
+      },
+      "isLocked": false,
+      "linkedName": "Take Coral_kend"
+    },
+    {
+      "anchor": {
+        "x": 13.977663934426227,
+        "y": 2.5924692622950816
+      },
+      "prevControl": {
+        "x": 14.88872950819672,
+        "y": 2.3647028688524583
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 122.73522627210768
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

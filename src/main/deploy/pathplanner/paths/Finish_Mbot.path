@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.234733606557377,
+        "y": 2.1848872950819667
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.5717186000600307,
+        "y": 3.166135466728515
+      },
+      "isLocked": false,
+      "linkedName": "Take Coral finish_Mbot"
+    },
+    {
+      "anchor": {
+        "x": 3.692213114754098,
+        "y": 2.6763831967213116
+      },
+      "prevControl": {
+        "x": 2.612926459981466,
+        "y": 2.4030709872229536
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 59.85861444792462
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -172.6476206401078
+  },
+  "useDefaultConstraints": true
+}

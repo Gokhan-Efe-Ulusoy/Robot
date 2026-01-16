@@ -3,42 +3,35 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.262602459016393,
-        "y": 5.361629098360655
+        "x": 10.417315573770493,
+        "y": 2.1369364754098363
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.022557074788766,
-        "y": 5.2885535899725955
+        "x": 11.454560274895028,
+        "y": 2.4455498262239557
       },
       "isLocked": false,
-      "linkedName": "Start Bitiş"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2467213114754097,
-        "y": 5.829149590163934
+        "x": 12.155532786885246,
+        "y": 2.5924692622950816
       },
       "prevControl": {
-        "x": 2.077224117973409,
-        "y": 5.7096000227575985
+        "x": 10.950060199242941,
+        "y": 2.220285766553804
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "take coral finish"
+      "linkedName": "Start_Kbotend"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "AlgaePickupSequenceCommand",
-      "waypointRelativePos": 0.7526115859449187,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -49,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -179.30972280213498
+    "rotation": 54.462322208025476
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -120.96375653207352
+    "rotation": 55.78429786756274
   },
   "useDefaultConstraints": true
 }
